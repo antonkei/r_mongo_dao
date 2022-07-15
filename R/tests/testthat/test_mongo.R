@@ -26,6 +26,21 @@ test_that("We can create a new question", {
   question$answers <- answers
 })
 
+
+test_that("JSON serialization for nested classes", {
+  question <- Question$new(NULL, NULL, NULL)
+  question$text <- "What will be a resulted vector for c(1, FALSE)"
+  question$type <- "single-option"
+  answers <- list(
+    Answer$new("[TRUE FALSE]", FALSE),
+    Answer$new("[1 0]", TRUE)
+  )
+  question$answers <- answers
+
+  print(jsonlite::toJSON(question$toList()), auto_unbox = TRUE, pretty = FALSE)
+
+})
+
 test_that("We can store a question to MongoDB", {
 
   question <- Question$new(NULL, NULL, NULL)

@@ -10,5 +10,4 @@ Answer <- R6::R6Class("Answer", public = list(
       text = self$text, isCorrect = self$isCorrect
     ))
   }
-)
-)
+))
